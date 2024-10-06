@@ -1,15 +1,6 @@
 {
-    "version": 2,
     "builds": [
-      {
-        "src": "todolist/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb" }
-      },
-      {
-        "src": "static/**/*",
-        "use": "@vercel/static"
-      }
+      { "src": "manage.py", "use": "@vercel/python" }
     ],
     "routes": [
       {
@@ -17,10 +8,10 @@
         "dest": "/static/$1"
       },
       {
-        "src": "(.*)",
-        "dest": "todolist/wsgi.py"
+        "src": "/(.*)",
+        "dest": "manage.py"
       }
-    ]
+    ],
+    "post-build": "python manage.py migrate"
   }
   
-    
