@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -89,28 +92,24 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 #     }
 # }
 
+# ! for MySQL with PlanetScale’s MySQL-compatible database
 
-# ! updated code for production SQLite deployement
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This is for local development.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'todo_db'),
+        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'Adi@37200$'),
+        'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
+        'PORT': os.environ.get('MYSQL_PORT', '3306'),
     }
 }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join('/tmp', 'db.sqlite3'),  # For Vercel deployment
-    }
-}
 
 
-if 'VERCEL' in os.environ:
-    DATABASES['default']['NAME'] = os.path.join('/tmp', 'db.sqlite3')
-else:
-    DATABASES['default']['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
