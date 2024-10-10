@@ -85,25 +85,25 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # ! for MySQL with PlanetScale’s MySQL-compatible database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'todo_db'),
-        'USER': os.environ.get('MYSQL_USER', 'root'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'Adi@37200$'),
-        'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
-        'PORT': os.environ.get('MYSQL_PORT', '3306'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('MYSQL_DATABASE', 'todo_db'),
+#         'USER': os.environ.get('MYSQL_USER', 'root'),
+#         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'Adi@37200$'),
+#         'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
+#         'PORT': os.environ.get('MYSQL_PORT', '3306'),
+#     }
+# }
 
 
 
