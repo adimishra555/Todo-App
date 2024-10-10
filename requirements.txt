@@ -1,8 +1,11 @@
 asgiref==3.8.1
+cffi==1.17.1
+cryptography==43.0.1
 dj-database-url==2.2.0
 Django==5.1.1
 gunicorn==23.0.0
 packaging==24.1
+pycparser==2.22
 PyMySQL==1.1.1
 sqlparse==0.5.1
 typing_extensions==4.12.2
