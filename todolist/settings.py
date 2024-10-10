@@ -46,7 +46,7 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS= ["https://"]
 
 # ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -132,7 +132,8 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgresql://postgres:GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM@junction.proxy.rlwy.net:25327/railway',
+        # 'NAME': 'postgresql://postgres:GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM@junction.proxy.rlwy.net:25327/railway',
+        'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM',
         'HOST': 'postgres.railway.internal',
