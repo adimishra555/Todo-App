@@ -129,10 +129,13 @@ DATABASES = {
 }
 
 
+import dj_database_url
+import os
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'postgresql://postgres:GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM@junction.proxy.rlwy.net:25327/railway',
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM',
@@ -142,6 +145,15 @@ DATABASES = {
 }
 
 
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
+
+
+        # 'NAME': 'postgresql://postgres:GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM@junction.proxy.rlwy.net:25327/railway',
 
 
 
