@@ -15,6 +15,22 @@ from pathlib import Path
 # import pymysql
 # pymysql.install_as_MySQLdb()
 
+
+
+import os
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()  # Load environment variables from .env file
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'  # Convert to boolean
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')  # Split the string into a list
+
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +43,10 @@ SECRET_KEY = 'django-insecure-w-j+7$fq!#=w*27fjl8v_9i8=!1wdoleqc(rk_yf!4(el(ycpv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-CSRF_TRUSTED_ORIGINS= [""]
+CSRF_TRUSTED_ORIGINS= ["https://"]
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.railway.app', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -115,10 +132,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<database_name>',
-        'USER': '<username>',
-        'PASSWORD': '<password>',
-        'HOST': '<host>',
+        'NAME': 'postgresql://postgres:GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM@junction.proxy.rlwy.net:25327/railway',
+        'USER': 'postgres',
+        'PASSWORD': 'GKEnqnFixtBQVOgrXBYglQSXCWvZFfAM',
+        'HOST': 'postgres.railway.internal',
         'PORT': '5432',  
     }
 }
